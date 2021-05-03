@@ -36,13 +36,13 @@ class FeedViewController: UIViewController {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
         layout.minimumLineSpacing = 30.0
-        layout.itemSize = CGSize(width: 370, height: 400.0)
+        layout.itemSize = CGSize(width: 370, height: 430.0)
         layout.scrollDirection = .vertical
 
         feedPhotosCollectionView.setCollectionViewLayout(layout, animated: true)
         feedPhotosCollectionView.delegate = self
         feedPhotosCollectionView.dataSource = self
-        feedPhotosCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        feedPhotosCollectionView.register(FeedPhotoCollectionViewCell.self, forCellWithReuseIdentifier: "FeedPhotoCollectionViewCell")
         feedPhotosCollectionView.backgroundColor = .clear
 
         view.addSubview(feedPhotosCollectionView)
@@ -62,10 +62,9 @@ extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? UICollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedPhotoCollectionViewCell", for: indexPath) as? FeedPhotoCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.backgroundColor = .red
 
         return cell
     }
