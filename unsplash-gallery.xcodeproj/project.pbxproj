@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F89E53D2640271600436CDF /* FeedPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F89E53C2640271600436CDF /* FeedPhotoCollectionViewCell.swift */; };
 		3F900F21263AF42D004F442F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F900F20263AF42D004F442F /* AppDelegate.swift */; };
 		3F900F23263AF42D004F442F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F900F22263AF42D004F442F /* SceneDelegate.swift */; };
 		3F900F2A263AF430004F442F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F900F29263AF430004F442F /* Assets.xcassets */; };
 		3F900F2D263AF430004F442F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F900F2B263AF430004F442F /* LaunchScreen.storyboard */; };
 		3F900F49263DE204004F442F /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F900F48263DE204004F442F /* FeedViewController.swift */; };
+		3FCC179D263EDA3300BF1CBA /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC179C263EDA3300BF1CBA /* UICollectionView.swift */; };
+		3FCC17A0263EDDA000BF1CBA /* Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC179F263EDDA000BF1CBA /* Observers.swift */; };
 		F43F0732A5C961482F50C95C /* Pods_unsplash_gallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E509CDC248EEE5781996C191 /* Pods_unsplash_gallery.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		10355482A388B47B30FFDC90 /* Pods-unsplash-gallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unsplash-gallery.release.xcconfig"; path = "Target Support Files/Pods-unsplash-gallery/Pods-unsplash-gallery.release.xcconfig"; sourceTree = "<group>"; };
+		3F89E53C2640271600436CDF /* FeedPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		3F900F1D263AF42D004F442F /* unsplash-gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "unsplash-gallery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F900F20263AF42D004F442F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F900F22263AF42D004F442F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +28,8 @@
 		3F900F2C263AF430004F442F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F900F2E263AF430004F442F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F900F48263DE204004F442F /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		3FCC179C263EDA3300BF1CBA /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		3FCC179F263EDDA000BF1CBA /* Observers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observers.swift; sourceTree = "<group>"; };
 		9F89C6914475F389E7D10D77 /* Pods-unsplash-gallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unsplash-gallery.debug.xcconfig"; path = "Target Support Files/Pods-unsplash-gallery/Pods-unsplash-gallery.debug.xcconfig"; sourceTree = "<group>"; };
 		E509CDC248EEE5781996C191 /* Pods_unsplash_gallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_unsplash_gallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -40,6 +46,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F89E53B264026FE00436CDF /* Supporting Views */ = {
+			isa = PBXGroup;
+			children = (
+				3F89E53C2640271600436CDF /* FeedPhotoCollectionViewCell.swift */,
+			);
+			path = "Supporting Views";
+			sourceTree = "<group>";
+		};
 		3F900F14263AF42D004F442F = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +89,7 @@
 		3F900F37263AFF55004F442F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3FCC179A263EDA1800BF1CBA /* Extensions */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -107,7 +122,7 @@
 		3F900F3B263AFF8C004F442F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				3F900F48263DE204004F442F /* FeedViewController.swift */,
+				3FCC17A2263EDEBC00BF1CBA /* Feed */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -117,6 +132,32 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3FCC179A263EDA1800BF1CBA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3FCC179B263EDA2200BF1CBA /* UIKit */,
+				3FCC179F263EDDA000BF1CBA /* Observers.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3FCC179B263EDA2200BF1CBA /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				3FCC179C263EDA3300BF1CBA /* UICollectionView.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		3FCC17A2263EDEBC00BF1CBA /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				3F89E53B264026FE00436CDF /* Supporting Views */,
+				3F900F48263DE204004F442F /* FeedViewController.swift */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		9A603E4C65E934DD48477863 /* Frameworks */ = {
@@ -270,7 +311,10 @@
 			files = (
 				3F900F21263AF42D004F442F /* AppDelegate.swift in Sources */,
 				3F900F49263DE204004F442F /* FeedViewController.swift in Sources */,
+				3FCC17A0263EDDA000BF1CBA /* Observers.swift in Sources */,
+				3FCC179D263EDA3300BF1CBA /* UICollectionView.swift in Sources */,
 				3F900F23263AF42D004F442F /* SceneDelegate.swift in Sources */,
+				3F89E53D2640271600436CDF /* FeedPhotoCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
