@@ -102,7 +102,7 @@ class FeedPhotoCollectionViewCell: UICollectionViewCell {
     // MARK: - Data Setup
     private func setupCellDatas(from data: Photo) {
         username.text = data.user?.username
-        photoDescription.text = data.photoDescription ?? data.altDescription ?? ""
+        photoDescription.text = data.photoDescription?.capitalizingFirstLetter() ?? data.altDescription?.capitalizingFirstLetter() ?? ""
     }
 }
 
