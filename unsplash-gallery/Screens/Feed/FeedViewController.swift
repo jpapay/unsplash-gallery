@@ -36,7 +36,7 @@ class FeedViewController: UIViewController {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
         layout.minimumLineSpacing = 30.0
-        layout.itemSize = CGSize(width: 370, height: 430.0)
+        layout.itemSize = CGSize(width: 370, height: 480.0)
         layout.scrollDirection = .vertical
 
         feedPhotosCollectionView.setCollectionViewLayout(layout, animated: true)

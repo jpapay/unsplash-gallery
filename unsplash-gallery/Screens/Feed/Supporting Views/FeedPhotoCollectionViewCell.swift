@@ -14,7 +14,7 @@ class FeedPhotoCollectionViewCell: UICollectionViewCell {
     private var userImage = UIView()
     private var username = UILabel()
     private var photo = UIView()
-    private var photoDescription = UITextView()
+    private var photoDescription = UILabel()
 
     // MARK: - Properties
 
@@ -53,6 +53,15 @@ class FeedPhotoCollectionViewCell: UICollectionViewCell {
         photo.layer.cornerRadius = 60.0
         photo.backgroundColor = .green
         self.addSubview(photo)
+
+        // Photo Description
+        photoDescription.font = UIFont(name: "HelveticaNeue", size: 16.0)
+        photoDescription.text = "POLICE TASK FORCE … Labor Day (Tag der Arbeit) - Demonstration May 1, 2021"
+        photoDescription.textColor = .black
+        photoDescription.translatesAutoresizingMaskIntoConstraints = false
+        photoDescription.adjustsFontSizeToFitWidth = false
+        photoDescription.numberOfLines = 0
+        self.addSubview(photoDescription)
     }
 
     // MARK: - Constraints Setup
@@ -72,6 +81,11 @@ class FeedPhotoCollectionViewCell: UICollectionViewCell {
             $0.width.height.equalTo(370.0)
             $0.top.equalTo(userImage.snp.bottom).offset(15.0)
             $0.centerX.equalToSuperview()
+        }
+
+        photoDescription.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.top.equalTo(photo.snp.bottom).offset(15.0)
         }
     }
 
