@@ -13,10 +13,15 @@ class FeedPhotoCollectionViewCell: UICollectionViewCell {
     // MARK: - UI Elements
     private var userImage = UIView()
     private var username = UILabel()
-    private var photo = UIView()
+    private var photo = UIImageView()
     private var photoDescription = UILabel()
 
     // MARK: - Properties
+    var photoData: Photo? {
+        didSet {
+            setupCellDatas(from: photoData!)
+        }
+    }
 
     // MARK: - Initialization
     override init(frame: CGRect) {
@@ -30,7 +35,9 @@ class FeedPhotoCollectionViewCell: UICollectionViewCell {
     }
 
     override func prepareForReuse() {
+        super.prepareForReuse()
 
+        self.photo.image = nil
     }
 
     // MARK: - UI Setup
@@ -42,7 +49,6 @@ class FeedPhotoCollectionViewCell: UICollectionViewCell {
 
         // User Name
         username.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
-        username.text = "grahammansfield1"
         username.textColor = .black
         username.translatesAutoresizingMaskIntoConstraints = false
         username.adjustsFontSizeToFitWidth = false
@@ -50,13 +56,15 @@ class FeedPhotoCollectionViewCell: UICollectionViewCell {
         self.addSubview(username)
 
         // Photo
+        photo.contentMode = .scaleAspectFit
+        photo.clipsToBounds = true
+        photo.translatesAutoresizingMaskIntoConstraints = true
         photo.layer.cornerRadius = 60.0
         photo.backgroundColor = .green
         self.addSubview(photo)
 
         // Photo Description
         photoDescription.font = UIFont(name: "HelveticaNeue", size: 16.0)
-        photoDescription.text = "POLICE TASK FORCE … Labor Day (Tag der Arbeit) - Demonstration May 1, 2021"
         photoDescription.textColor = .black
         photoDescription.translatesAutoresizingMaskIntoConstraints = false
         photoDescription.adjustsFontSizeToFitWidth = false
@@ -90,9 +98,10 @@ class FeedPhotoCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: - Data Setup
-//    private func setupCellDatas(from data: T) {
-//
-//    }
+    private func setupCellDatas(from data: Photo) {
+        username.text = data.user?.username
+        photoDescription.text = data.photoDescription ?? data.altDescription ?? ""
+    }
 }
 
 extension FeedPhotoCollectionViewCell {

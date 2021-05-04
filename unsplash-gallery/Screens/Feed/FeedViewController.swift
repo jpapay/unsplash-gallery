@@ -13,12 +13,31 @@ class FeedViewController: UIViewController {
     // MARK: - UI Elements
     private var feedPhotosCollectionView = UICollectionView(withFlowLayout: true)
 
+    // MARK: - Properties
+    private var viewModel: FeedViewModel
+
+    // MARK: - Initialization
+    init(viewModel: FeedViewModel) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
         setupConstraints()
+        setupObservers()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.getPhotos()
     }
 
     // MARK: - UI setup
@@ -54,17 +73,29 @@ class FeedViewController: UIViewController {
             $0.edges.equalToSuperview()
         }
     }
+
+    // MARK: - Observers setup
+    private func setupObservers() {
+        viewModel.photos.bind(self) { [weak self] _ in
+
+            DispatchQueue.main.async {
+                self?.feedPhotosCollectionView.reloadData()
+            }
+        }
+    }
 }
 
 extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return viewModel.photos.value.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedPhotoCollectionViewCell", for: indexPath) as? FeedPhotoCollectionViewCell else {
             return UICollectionViewCell()
         }
+
+        cell.photoData = viewModel.photos.value[indexPath.item]
 
         return cell
     }
