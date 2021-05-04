@@ -99,4 +99,29 @@ extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelega
 
         return cell
     }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+            guard let cell = cell as? FeedPhotoCollectionViewCell else { return }
+            let itemNumber = NSNumber(value: indexPath.item)
+
+            if let cachedImage = self.viewModel.cachePhoto.object(forKey: itemNumber) {
+                    cell.photo.image = cachedImage
+                } else {
+                    self.viewModel.loadImage(with: (self.viewModel.photos.value[indexPath.item].urls?.regular)!) { [weak self] (image) in
+                        guard let self = self, let image = image else { return }
+                        cell.photo.image = image
+                        self.viewModel.cachePhoto.setObject(image, forKey: itemNumber)
+                    }
+                }
+
+        if let cachedUserImage = self.viewModel.cacheUserPhoto.object(forKey: itemNumber) {
+                cell.userImage.image = cachedUserImage
+            } else {
+                self.viewModel.loadUserImage(with: (self.viewModel.photos.value[indexPath.item].user?.profileImage?.medium)!) { [weak self] (image) in
+                    guard let self = self, let image = image else { return }
+                    cell.userImage.image = image
+                    self.viewModel.cacheUserPhoto.setObject(image, forKey: itemNumber)
+                }
+            }
+        }
 }

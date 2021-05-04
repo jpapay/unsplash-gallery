@@ -11,9 +11,9 @@ import SnapKit
 class FeedPhotoCollectionViewCell: UICollectionViewCell {
 
     // MARK: - UI Elements
-    private var userImage = UIView()
+    var userImage = UIImageView()
     private var username = UILabel()
-    private var photo = UIImageView()
+    var photo = UIImageView()
     private var photoDescription = UILabel()
 
     // MARK: - Properties
@@ -43,6 +43,9 @@ class FeedPhotoCollectionViewCell: UICollectionViewCell {
     // MARK: - UI Setup
     private func setupUI() {
         // User Image
+        userImage.contentMode = .scaleAspectFill
+        userImage.clipsToBounds = true
+        userImage.translatesAutoresizingMaskIntoConstraints = true
         userImage.layer.cornerRadius = 22.5
         userImage.backgroundColor = .blue
         self.addSubview(userImage)
@@ -56,11 +59,10 @@ class FeedPhotoCollectionViewCell: UICollectionViewCell {
         self.addSubview(username)
 
         // Photo
-        photo.contentMode = .scaleAspectFit
+        photo.contentMode = .scaleAspectFill
         photo.clipsToBounds = true
         photo.translatesAutoresizingMaskIntoConstraints = true
         photo.layer.cornerRadius = 60.0
-        photo.backgroundColor = .green
         self.addSubview(photo)
 
         // Photo Description
