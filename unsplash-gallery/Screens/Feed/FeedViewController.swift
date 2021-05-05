@@ -49,9 +49,6 @@ class FeedViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .white
 
-        // Activity Indicator
-        view.addSubview(activityIndicator)
-
         // Feed Header
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = "Photos"
@@ -73,6 +70,9 @@ class FeedViewController: UIViewController {
         feedPhotosCollectionView.backgroundColor = .clear
 
         view.addSubview(feedPhotosCollectionView)
+
+        // Activity Indicator
+        view.addSubview(activityIndicator)
     }
 
     // MARK: - Constraints setup
@@ -113,6 +113,16 @@ extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.photoData = viewModel.photos.value[indexPath.item]
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let itemNumber = NSNumber(value: indexPath.item)
+        let imageView = UIImageView()
+        
+        if let cachedImage = self.viewModel.cachePhoto.object(forKey: itemNumber) {
+            imageView.image = cachedImage
+            self.navigationController?.pushViewController(PhotoDetailViewController(photo: imageView), animated: true)
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
