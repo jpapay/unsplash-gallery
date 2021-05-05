@@ -47,7 +47,6 @@ class FeedPhotoCollectionViewCell: UICollectionViewCell {
         userImage.clipsToBounds = true
         userImage.translatesAutoresizingMaskIntoConstraints = true
         userImage.layer.cornerRadius = 22.5
-        userImage.backgroundColor = .blue
         self.addSubview(userImage)
 
         // User Name

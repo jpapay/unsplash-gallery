@@ -12,6 +12,7 @@ class FeedViewController: UIViewController {
 
     // MARK: - UI Elements
     private var feedPhotosCollectionView = UICollectionView(withFlowLayout: true)
+    private var activityIndicator = UIActivityIndicatorView()
 
     // MARK: - Properties
     private var viewModel: FeedViewModel
@@ -37,12 +38,19 @@ class FeedViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
         viewModel.getPhotos()
     }
 
     // MARK: - UI setup
     private func setupUI() {
         view.backgroundColor = .white
+
+        // Activity Indicator
+        view.addSubview(activityIndicator)
 
         // Feed Header
         navigationItem.largeTitleDisplayMode = .always
@@ -72,6 +80,10 @@ class FeedViewController: UIViewController {
         feedPhotosCollectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+
+        activityIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
     }
 
     // MARK: - Observers setup
@@ -79,6 +91,9 @@ class FeedViewController: UIViewController {
         viewModel.photos.bind(self) { [weak self] _ in
 
             DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.isHidden = true
+
                 self?.feedPhotosCollectionView.reloadData()
             }
         }
