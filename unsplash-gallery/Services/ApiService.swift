@@ -10,11 +10,12 @@ import Foundation
 class ApiService {
 
     private static let photosUrl = "https://api.unsplash.com/photos"
+    private static let clientId = "Client-ID 86a58c98b5095e4e069222d9caaf57e27a4c0028772b5a76e4f42ff9a53ab563"
 
     static func getFeedPhotos(completion: @escaping ([Photo]) -> Void) {
         var request = URLRequest(url: URL(string: photosUrl)!)
         request.httpMethod = "GET"
-        request.setValue("Client-ID 86a58c98b5095e4e069222d9caaf57e27a4c0028772b5a76e4f42ff9a53ab563", forHTTPHeaderField: "Authorization")
+        request.setValue(clientId, forHTTPHeaderField: "Authorization")
 
         let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let data = data {
@@ -33,7 +34,7 @@ class ApiService {
     static func getExifForPhoto(with id: String, completion: @escaping (ExifData) -> Void) {
         var request = URLRequest(url: URL(string: "\(photosUrl)/\(id)")!)
         request.httpMethod = "GET"
-        request.setValue("Client-ID 86a58c98b5095e4e069222d9caaf57e27a4c0028772b5a76e4f42ff9a53ab563", forHTTPHeaderField: "Authorization")
+        request.setValue(clientId, forHTTPHeaderField: "Authorization")
 
         let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let data = data {

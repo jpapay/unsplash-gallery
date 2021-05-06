@@ -93,10 +93,18 @@
 		3F8CEB752643E88800BEC690 /* Supporting Views */ = {
 			isa = PBXGroup;
 			children = (
+				3F8CEB7F2644433000BEC690 /* ModalViewController */,
+			);
+			path = "Supporting Views";
+			sourceTree = "<group>";
+		};
+		3F8CEB7F2644433000BEC690 /* ModalViewController */ = {
+			isa = PBXGroup;
+			children = (
 				3F8CEB762643E8A700BEC690 /* PresentationController.swift */,
 				3F8CEB7C2643F0DE00BEC690 /* ModalViewController.swift */,
 			);
-			path = "Supporting Views";
+			path = ModalViewController;
 			sourceTree = "<group>";
 		};
 		3F900F14263AF42D004F442F = {

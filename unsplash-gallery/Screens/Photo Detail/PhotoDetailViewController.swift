@@ -73,7 +73,7 @@ class PhotoDetailViewController: UIViewController {
     }
 
     @objc func showDetails() {
-        let modalDetails = ModalViewController()
+        let modalDetails = ModalViewController(viewModel: viewModel)
         modalDetails.modalPresentationStyle = .custom
         modalDetails.transitioningDelegate = self
         self.present(modalDetails, animated: true, completion: nil)
