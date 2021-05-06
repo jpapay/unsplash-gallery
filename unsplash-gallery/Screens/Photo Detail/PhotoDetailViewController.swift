@@ -12,6 +12,7 @@ class PhotoDetailViewController: UIViewController {
 
     // MARK: - UI Elements
     private var photo = UIImageView()
+    private var infoButton = UIButton(type: .infoLight)
 
     // MARK: - Initialization
     init(photo: UIImageView) {
@@ -23,7 +24,6 @@ class PhotoDetailViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -42,6 +42,13 @@ class PhotoDetailViewController: UIViewController {
         photo.clipsToBounds = true
         photo.translatesAutoresizingMaskIntoConstraints = true
         view.addSubview(photo)
+
+        // Info Button
+        infoButton.tintColor = .white
+        infoButton.addTarget(self, action: #selector(showDetails), for: .touchUpInside)
+
+        let barButton = UIBarButtonItem(customView: infoButton)
+        self.navigationItem.rightBarButtonItem = barButton
     }
 
     // MARK: - Constraints setup
@@ -49,5 +56,18 @@ class PhotoDetailViewController: UIViewController {
         photo.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+
+    @objc func showDetails() {
+        let modalDetails = ModalViewController()
+        modalDetails.modalPresentationStyle = .custom
+        modalDetails.transitioningDelegate = self
+        self.present(modalDetails, animated: true, completion: nil)
+    }
+}
+
+extension PhotoDetailViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationController(presentedViewController: presented, presenting: presenting)
     }
 }

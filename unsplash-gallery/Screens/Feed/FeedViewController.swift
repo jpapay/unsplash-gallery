@@ -55,6 +55,7 @@ class FeedViewController: UIViewController {
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.tintColor = .white
 
         // Feed Photos CollectionView
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
