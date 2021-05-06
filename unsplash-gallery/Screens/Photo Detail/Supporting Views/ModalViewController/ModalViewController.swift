@@ -71,7 +71,7 @@ class ModalViewController: UIViewController {
         titleLabel.numberOfLines = 0
         containerView.addSubview(titleLabel)
 
-        // Title Label
+        // Make Label
         makeLabel.font = UIFont(name: "HelveticaNeue", size: 18.0)
         makeLabel.textColor = .white
         makeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +79,7 @@ class ModalViewController: UIViewController {
         makeLabel.numberOfLines = 0
         containerView.addSubview(makeLabel)
 
-        // Title Label
+        // Model Label
         modelLabel.font = UIFont(name: "HelveticaNeue", size: 18.0)
         modelLabel.textColor = .white
         modelLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +87,7 @@ class ModalViewController: UIViewController {
         modelLabel.numberOfLines = 0
         containerView.addSubview(modelLabel)
 
-        // Title Label
+        // Exposure Label
         exposureLabel.font = UIFont(name: "HelveticaNeue", size: 18.0)
         exposureLabel.textColor = .white
         exposureLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -95,7 +95,7 @@ class ModalViewController: UIViewController {
         exposureLabel.numberOfLines = 0
         containerView.addSubview(exposureLabel)
 
-        // Title Label
+        // Aperture Label
         apertureLabel.font = UIFont(name: "HelveticaNeue", size: 18.0)
         apertureLabel.textColor = .white
         apertureLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -103,7 +103,7 @@ class ModalViewController: UIViewController {
         apertureLabel.numberOfLines = 0
         containerView.addSubview(apertureLabel)
 
-        // Title Label
+        // Focal Label
         focalLabel.font = UIFont(name: "HelveticaNeue", size: 18.0)
         focalLabel.textColor = .white
         focalLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -111,7 +111,7 @@ class ModalViewController: UIViewController {
         focalLabel.numberOfLines = 0
         containerView.addSubview(focalLabel)
 
-        // Title Label
+        // Iso Label
         isoLabel.font = UIFont(name: "HelveticaNeue", size: 18.0)
         isoLabel.textColor = .white
         isoLabel.translatesAutoresizingMaskIntoConstraints = false
