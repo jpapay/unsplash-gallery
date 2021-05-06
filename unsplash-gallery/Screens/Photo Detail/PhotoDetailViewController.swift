@@ -31,11 +31,16 @@ class PhotoDetailViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.getExif(with: viewModel.photoData.id ?? "")
 
         setupUI()
-        print(viewModel.photoData.id)
         setupDatas()
         setupConstraints()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
 
     // MARK: - UI setup

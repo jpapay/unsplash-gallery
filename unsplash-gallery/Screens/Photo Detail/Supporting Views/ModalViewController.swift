@@ -39,14 +39,14 @@ class ModalViewController: UIViewController {
         view.addGestureRecognizer(panGesture)
 
         // Container View
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = #colorLiteral(red: 0.1794748902, green: 0.1794748902, blue: 0.1794748902, alpha: 1)
         containerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         view.addSubview(containerView)
 
         // User Name
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
-        label.text = "chibrax"
-        label.textColor = .black
+        label.text = "Label"
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontSizeToFitWidth = false
         label.numberOfLines = 0

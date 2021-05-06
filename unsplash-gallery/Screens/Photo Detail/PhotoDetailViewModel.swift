@@ -18,4 +18,10 @@ class PhotoDetailViewModel {
         self.photoData = photoData
         self.photo = photo
     }
+
+    func getExif(with id: String) {
+        ApiService.getExifForPhoto(with: id) { [weak self] data in
+            self?.photoData.exif = data.exif
+        }
+    }
 }
