@@ -49,15 +49,13 @@ class FeedViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .white
 
-        // Activity Indicator
-        view.addSubview(activityIndicator)
-
         // Feed Header
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = "Photos"
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.tintColor = .white
 
         // Feed Photos CollectionView
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -73,6 +71,9 @@ class FeedViewController: UIViewController {
         feedPhotosCollectionView.backgroundColor = .clear
 
         view.addSubview(feedPhotosCollectionView)
+
+        // Activity Indicator
+        view.addSubview(activityIndicator)
     }
 
     // MARK: - Constraints setup
@@ -113,6 +114,17 @@ extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.photoData = viewModel.photos.value[indexPath.item]
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let itemNumber = NSNumber(value: indexPath.item)
+        let imageView = UIImageView()
+        
+        if let cachedImage = self.viewModel.cachePhoto.object(forKey: itemNumber) {
+            imageView.image = cachedImage
+            let viewModel = PhotoDetailViewModel(photoData: self.viewModel.photos.value[indexPath.item], photo: imageView.image ?? UIImage())
+            self.navigationController?.pushViewController(PhotoDetailViewController(viewModel: viewModel), animated: true)
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

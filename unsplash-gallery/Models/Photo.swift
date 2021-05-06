@@ -13,7 +13,7 @@ struct Photo: Codable {
     let altDescription: String?
     let urls: Urls?
     let user: User?
-    let exif: Exif?
+    var exif: Exif?
     let location: Location?
 
     enum CodingKeys: String, CodingKey {
@@ -28,6 +28,10 @@ struct Photo: Codable {
 }
 
 // MARK: - Exif
+struct ExifData: Codable {
+    let exif: Exif?
+}
+
 struct Exif: Codable {
     let make, model, exposureTime, aperture: String?
     let focalLength: String?
