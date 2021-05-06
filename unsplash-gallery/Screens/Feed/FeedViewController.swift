@@ -122,7 +122,8 @@ extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         if let cachedImage = self.viewModel.cachePhoto.object(forKey: itemNumber) {
             imageView.image = cachedImage
-            self.navigationController?.pushViewController(PhotoDetailViewController(photo: imageView), animated: true)
+            let viewModel = PhotoDetailViewModel(photoData: self.viewModel.photos.value[indexPath.item], photo: imageView.image ?? UIImage())
+            self.navigationController?.pushViewController(PhotoDetailViewController(viewModel: viewModel), animated: true)
         }
     }
 

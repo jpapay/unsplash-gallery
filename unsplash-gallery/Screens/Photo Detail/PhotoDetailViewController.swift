@@ -14,9 +14,12 @@ class PhotoDetailViewController: UIViewController {
     private var photo = UIImageView()
     private var infoButton = UIButton(type: .infoLight)
 
+    // MARK: - Properties
+    private var viewModel: PhotoDetailViewModel
+
     // MARK: - Initialization
-    init(photo: UIImageView) {
-        self.photo = photo
+    init(viewModel: PhotoDetailViewModel) {
+        self.viewModel = viewModel
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -30,6 +33,8 @@ class PhotoDetailViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
+        print(viewModel.photoData.id)
+        setupDatas()
         setupConstraints()
     }
 
@@ -56,6 +61,10 @@ class PhotoDetailViewController: UIViewController {
         photo.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+
+    private func setupDatas() {
+        photo.image = viewModel.photo
     }
 
     @objc func showDetails() {
