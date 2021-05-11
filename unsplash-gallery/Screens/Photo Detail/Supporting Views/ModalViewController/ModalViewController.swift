@@ -124,37 +124,37 @@ class ModalViewController: UIViewController {
     private func setupConstraints() {
         titleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(10.0)
+            $0.top.equalTo(Layout.top)
         }
 
         makeLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(35.0)
-            $0.left.equalTo(15.0)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(Layout.largeTopOffset)
+            $0.left.equalTo(Layout.left)
         }
 
         modelLabel.snp.makeConstraints {
-            $0.top.equalTo(makeLabel.snp.bottom).offset(20.0)
-            $0.left.equalTo(15.0)
+            $0.top.equalTo(makeLabel.snp.bottom).offset(Layout.topOffset)
+            $0.left.equalTo(Layout.left)
         }
 
         exposureLabel.snp.makeConstraints {
-            $0.top.equalTo(modelLabel.snp.bottom).offset(20.0)
-            $0.left.equalTo(15.0)
+            $0.top.equalTo(modelLabel.snp.bottom).offset(Layout.topOffset)
+            $0.left.equalTo(Layout.left)
         }
 
         apertureLabel.snp.makeConstraints {
-            $0.top.equalTo(exposureLabel.snp.bottom).offset(20.0)
-            $0.left.equalTo(15.0)
+            $0.top.equalTo(exposureLabel.snp.bottom).offset(Layout.topOffset)
+            $0.left.equalTo(Layout.left)
         }
 
         focalLabel.snp.makeConstraints {
-            $0.top.equalTo(apertureLabel.snp.bottom).offset(20.0)
-            $0.left.equalTo(15.0)
+            $0.top.equalTo(apertureLabel.snp.bottom).offset(Layout.topOffset)
+            $0.left.equalTo(Layout.left)
         }
 
         isoLabel.snp.makeConstraints {
-            $0.top.equalTo(focalLabel.snp.bottom).offset(20.0)
-            $0.left.equalTo(15.0)
+            $0.top.equalTo(focalLabel.snp.bottom).offset(Layout.topOffset)
+            $0.left.equalTo(Layout.left)
         }
     }
 
@@ -185,5 +185,14 @@ class ModalViewController: UIViewController {
                 }
             }
         }
+    }
+}
+
+extension ModalViewController {
+    enum Layout {
+        static let top: CGFloat = 10.0
+        static let left: CGFloat = 15.0
+        static let topOffset: CGFloat = 20.0
+        static let largeTopOffset: CGFloat = 35.0
     }
 }

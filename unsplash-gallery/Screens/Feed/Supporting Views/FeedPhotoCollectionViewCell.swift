@@ -83,18 +83,18 @@ class FeedPhotoCollectionViewCell: UICollectionViewCell {
 
         username.snp.makeConstraints {
             $0.top.equalTo(Layout.usernameAlignement)
-            $0.left.equalTo(userImage.snp.right).offset(10.0)
+            $0.left.equalTo(userImage.snp.right).offset(Layout.mediumOffset)
         }
 
         photo.snp.makeConstraints {
             $0.width.height.equalTo(370.0)
-            $0.top.equalTo(userImage.snp.bottom).offset(15.0)
+            $0.top.equalTo(userImage.snp.bottom).offset(Layout.offset)
             $0.centerX.equalToSuperview()
         }
 
         photoDescription.snp.makeConstraints {
             $0.left.right.equalToSuperview()
-            $0.top.equalTo(photo.snp.bottom).offset(15.0)
+            $0.top.equalTo(photo.snp.bottom).offset(Layout.offset)
         }
     }
 
@@ -110,7 +110,8 @@ extension FeedPhotoCollectionViewCell {
     enum Layout {
         static let top: CGFloat = 18.0
         static let left: CGFloat = 15.0
-        static let offset: CGFloat = 5.0
+        static let mediumOffset: CGFloat = 10.0
+        static let offset: CGFloat = 15.0
         static let usernameAlignement = 25.0
     }
 }
