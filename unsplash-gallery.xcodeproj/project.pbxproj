@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F72D62D264B02500027EEC8 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F72D62C264B02500027EEC8 /* AnnotationView.swift */; };
 		3F89E53D2640271600436CDF /* FeedPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F89E53C2640271600436CDF /* FeedPhotoCollectionViewCell.swift */; };
 		3F89E5412641502D00436CDF /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F89E5402641502D00436CDF /* Photo.swift */; };
 		3F89E54426416A6300436CDF /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F89E54326416A6300436CDF /* FeedViewModel.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		10355482A388B47B30FFDC90 /* Pods-unsplash-gallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unsplash-gallery.release.xcconfig"; path = "Target Support Files/Pods-unsplash-gallery/Pods-unsplash-gallery.release.xcconfig"; sourceTree = "<group>"; };
+		3F72D62C264B02500027EEC8 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		3F89E53C2640271600436CDF /* FeedPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		3F89E5402641502D00436CDF /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		3F89E54326416A6300436CDF /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				3F8CEB762643E8A700BEC690 /* PresentationController.swift */,
 				3F8CEB7C2643F0DE00BEC690 /* ModalViewController.swift */,
+				3F72D62C264B02500027EEC8 /* AnnotationView.swift */,
 			);
 			path = ModalViewController;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				3F900F21263AF42D004F442F /* AppDelegate.swift in Sources */,
 				3F89E54B2641A50500436CDF /* String.swift in Sources */,
 				3F900F49263DE204004F442F /* FeedViewController.swift in Sources */,
+				3F72D62D264B02500027EEC8 /* AnnotationView.swift in Sources */,
 				3FCC17A0263EDDA000BF1CBA /* Observers.swift in Sources */,
 				3F8CEB6B2642D8AB00BEC690 /* PhotoDetailViewController.swift in Sources */,
 				3F8CEB732642FACC00BEC690 /* PhotoDetailViewModel.swift in Sources */,

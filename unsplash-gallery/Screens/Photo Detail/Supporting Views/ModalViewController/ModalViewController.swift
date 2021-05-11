@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class ModalViewController: UIViewController {
 
@@ -23,6 +24,7 @@ class ModalViewController: UIViewController {
     private var apertureLabel = UILabel()
     private var focalLabel = UILabel()
     private var isoLabel = UILabel()
+    private lazy var mapView = MKMapView()
 
     // MARK: - Initialization
     init(viewModel: PhotoDetailViewModel) {
@@ -118,6 +120,11 @@ class ModalViewController: UIViewController {
         isoLabel.adjustsFontSizeToFitWidth = false
         isoLabel.numberOfLines = 0
         containerView.addSubview(isoLabel)
+
+        // Map View
+        if viewModel.hasLocation {
+            containerView.addSubview(mapView)
+        }
     }
 
     // MARK: - Setup Constraints
@@ -156,16 +163,39 @@ class ModalViewController: UIViewController {
             $0.top.equalTo(focalLabel.snp.bottom).offset(Layout.topOffset)
             $0.left.equalTo(Layout.left)
         }
+
+        if viewModel.hasLocation {
+            mapView.snp.makeConstraints {
+                $0.centerX.equalToSuperview()
+                $0.top.equalTo(isoLabel.snp.bottom).offset(Layout.topOffset)
+                $0.width.equalTo(280.0)
+                $0.height.equalTo(160.0)
+            }
+        }
     }
 
     // MARK: - Data Setup
     private func setupData() {
+
+        // Exif labels
         makeLabel.text = "Make: \(viewModel.photoData.exif?.make ?? "--")"
         modelLabel.text = "Model: \(viewModel.photoData.exif?.model ?? "--")"
         exposureLabel.text = "Shutter Speed: \(viewModel.photoData.exif?.exposureTime ?? "--")"
         apertureLabel.text = "Aperture: \(viewModel.photoData.exif?.aperture ?? "--")"
         focalLabel.text = "Focal Length: \(viewModel.photoData.exif?.focalLength ?? "--")"
         isoLabel.text = "ISO: \(viewModel.photoData.exif?.iso ?? 0)"
+
+        // Location
+        if viewModel.hasLocation {
+            let initialLocation = CLLocation(latitude: viewModel.photoData.location?.position?.latitude ?? 0.0, longitude: viewModel.photoData.location?.position?.longitude ?? 0.0)
+            mapView.centerToLocation(initialLocation)
+
+            let annotation = AnnotationView(
+                title: viewModel.photoData.location?.title,
+                locationName: viewModel.photoData.location?.name,
+                coordinate: CLLocationCoordinate2D(latitude: viewModel.photoData.location?.position?.latitude ?? 0.0, longitude: viewModel.photoData.location?.position?.longitude ?? 0.0))
+            mapView.addAnnotation(annotation)
+        }
     }
 
     @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
@@ -195,4 +225,17 @@ extension ModalViewController {
         static let topOffset: CGFloat = 20.0
         static let largeTopOffset: CGFloat = 35.0
     }
+}
+
+private extension MKMapView {
+  func centerToLocation(
+    _ location: CLLocation,
+    regionRadius: CLLocationDistance = 1000
+  ) {
+    let coordinateRegion = MKCoordinateRegion(
+      center: location.coordinate,
+      latitudinalMeters: regionRadius,
+      longitudinalMeters: regionRadius)
+    setRegion(coordinateRegion, animated: true)
+  }
 }

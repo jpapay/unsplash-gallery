@@ -13,10 +13,12 @@ class PhotoDetailViewModel {
     // MARK: - Properties
     var photoData: Photo
     var photo: UIImage
+    var hasLocation: Bool
 
     init(photoData: Photo, photo: UIImage) {
         self.photoData = photoData
         self.photo = photo
+        self.hasLocation = (photoData.location != nil) ? true : false
     }
 
     func getExif(with id: String) {
